@@ -148,5 +148,31 @@ for (const movement of movements) {
     console.log(`You withdrew ${Math.abs(movement)}`);
   }
 }
+// Utilização do forEach() => Método para percorrer um array, NÃO RETORNA nada, ele apenas realiza alterações sobre aquele array
+// array.forEach(function(elemento, índice, array) {
+// Código a ser executado
+// });
 
-movements.forEach(function () {});
+movements.forEach(function (movement) {
+  if (movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+});
+console.log('------- FOREACH -------');
+movements.forEach((elemento, indice, array) => {
+  console.log(
+    `Elemento: ${elemento}, Índice: ${indice}, Arrat completo: [${array}]`
+  );
+});
+
+// Utilizando o método .entries() para para pegar o index no laço for
+
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+}
