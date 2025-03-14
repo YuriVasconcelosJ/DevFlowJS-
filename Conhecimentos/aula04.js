@@ -3,10 +3,41 @@
 // Mantém a ordem de inserção 
 // Possui métodos prórpios para manipulação de dados
 
-const meuMapa = new Map();
+// const meuMapa = new Map();
 
+// Usando forEach() para iterar sobre um map?
+
+const estudantes = new Map([
+    ['Alice', 8.5],
+    ['Bob', 7.3],
+    ['Carlos', 9.0],
+]);
+estudantes.forEach((nota, aluno) => {
+    console.log(`${aluno}: ${nota}`);
+});
+
+
+// Métodos de um MAP:
+// Adicionando elementos em um Map utilizamos o método set:
 const alunos = new Map();
 
 alunos.set(101, { nome: 'Ana', nota: 8.5 });
-alunos.set(101, { nome: 'Ana', nota: 8.5 });
-alunos.set(101, { nome: 'Ana', nota: 8.5 });
+alunos.set(102, { nome: 'Carlos', nota: 6.4 });
+alunos.set(103, { nome: 'Alberto', nota: 7.0 });
+
+// Obtém um valor de um mapa
+console.log(alunos.get(101)); //{ nome: 'Ana', nota: 8.5 }
+
+// Verifica se a chave existe no Map: 
+console.log(alunos.has(101)); // Retorna um boolean
+
+// Remove um item do map:
+alunos.delete(102);
+console.log(alunos.has(102)); // Retorna um boolean
+
+// Retornando o número de elementos em um Map:
+console.log(alunos.size);
+
+// Remove todos os elementos de um Map:
+alunos.clear();
+console.log(alunos.size); 
