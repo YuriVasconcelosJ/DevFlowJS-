@@ -2,6 +2,7 @@
 // Qualquer tipo de dado pode ser uma chave.
 // Mantém a ordem de inserção 
 // Possui métodos prórpios para manipulação de dados
+// Map aceita VALORES repetidos, mas quando tiver CAHVES repetidas, sobrescreve a o valor da chave anterior
 
 // const meuMapa = new Map();
 
@@ -16,6 +17,13 @@ estudantes.forEach((nota, aluno) => {
     console.log(`${aluno}: ${nota}`);
 });
 
+// Sobrecrevendo um valor
+const testeMap = new Map();
+
+testeMap.set(1, 'Valor A');
+testeMap.set(1, 'Valor B'); // Sobrescreve o valor da chave 1
+
+console.log(testeMap);
 
 // Métodos de um MAP:
 // Adicionando elementos em um Map utilizamos o método set:
