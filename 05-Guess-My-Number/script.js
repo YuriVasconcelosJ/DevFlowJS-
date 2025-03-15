@@ -2,7 +2,9 @@
 // Lógica a ser seguida:
 // Cicar no botão de check => Verificar se o número digitado é o número correto => Se for deixar a tela verde, armazenar o highscore, Mudar a mensagem para "Parabéns" e mudar o tema para verde
 
-const randomNumber = Math.trunc(Math.random() * 20 + 1);
+// Problema encontrado, eu tenho que armazenar o valo em highScore sem alterar o valor do score
+
+let randomNumber = Math.trunc(Math.random() * 20 + 1);
 let scorePlayer = 20;
 let bestScore = 0;
 // Evento para realizar a verificação do número se está correto ou não
@@ -19,7 +21,11 @@ document.querySelector('.check').addEventListener('click', () => {
     document.querySelector('.message').textContent = 'Correct Number!';
     document.querySelector('.number').textContent = randomNumber;
     document.querySelector('body').style.background = 'green';
-    bestScore = scorePlayer;
+
+    // O problema está aqui. Ele estáalterando msm sendo inferior
+    if (scorePlayer > bestScore) {
+      bestScore = scorePlayer;
+    }
     document.querySelector('.highscore').textContent = scorePlayer;
     scorePlayer = 20;
   }
@@ -53,6 +59,7 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('body').style.background = '#222';
   document.querySelector('.score').textContent = 20;
   document.querySelector('.message').textContent = 'Start guessing...';
+  randomNumber = Math.trunc(Math.random() * 20 + 1);
   if (scorePlayer > bestScore) {
     bestScore = scorePlayer;
   }
