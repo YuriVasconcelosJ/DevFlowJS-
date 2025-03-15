@@ -22,12 +22,11 @@ document.querySelector('.check').addEventListener('click', () => {
     document.querySelector('.number').textContent = randomNumber;
     document.querySelector('body').style.background = 'green';
 
-    // O problema está aqui. Ele estáalterando msm sendo inferior
+    // O problema está aqui. Ele está alterando msm sendo inferior
     if (scorePlayer > bestScore) {
       bestScore = scorePlayer;
+      document.querySelector('.highscore').textContent = scorePlayer;
     }
-    document.querySelector('.highscore').textContent = scorePlayer;
-    scorePlayer = 20;
   }
   // Caso o jogador erre a alternativa
   else {
@@ -60,7 +59,17 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.score').textContent = 20;
   document.querySelector('.message').textContent = 'Start guessing...';
   randomNumber = Math.trunc(Math.random() * 20 + 1);
+  // O problema está aqui. Ele está alterando msm sendo inferior
   if (scorePlayer > bestScore) {
     bestScore = scorePlayer;
+    document.querySelector('.highscore').textContent = scorePlayer;
   }
+  scorePlayer = 20;
 });
+
+console.log(bestScore);
+
+// Erros encontrados = Quando ele acertar o número, deve verificar se o score é maior e atualizar
+// Se não, manter e cpntinuar
+
+// Quando eu clico no again, ele não atualiza para o maior
