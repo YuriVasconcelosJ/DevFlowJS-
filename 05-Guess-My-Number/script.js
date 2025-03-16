@@ -1,75 +1,62 @@
 'use strict';
-// Lógica a ser seguida:
-// Cicar no botão de check => Verificar se o número digitado é o número correto => Se for deixar a tela verde, armazenar o highscore, Mudar a mensagem para "Parabéns" e mudar o tema para verde
 
-// Problema encontrado, eu tenho que armazenar o valo em highScore sem alterar o valor do score
+const gerarNumeroAleatorio = () => Math.trunc(Math.random() * 20 + 1);
 
-let randomNumber = Math.trunc(Math.random() * 20 + 1);
+let randomNumber = gerarNumeroAleatorio();
 let scorePlayer = 20;
 let bestScore = 0;
-// Evento para realizar a verificação do número se está correto ou não
-document.querySelector('.check').addEventListener('click', () => {
-  // Valor pego da caixa de input
+
+// Função para atualizar o texto de um elemento
+const atualizarTexto = (seletor, texto) => {
+  document.querySelector(seletor).textContent = texto;
+};
+
+const verificarPalpite = () => {
   let valueGuess = Number(document.querySelector('.guess').value);
 
-  // Faltou realziar a verificação se tem algo escrito
   if (!valueGuess) {
-    document.querySelector('.message').textContent = 'No number!';
+    atualizarTexto('.message', 'No number');
+    return;
   }
-  // Caso o jogador ganhe
-  else if (valueGuess === randomNumber) {
-    document.querySelector('.message').textContent = 'Correct Number!';
-    document.querySelector('.number').textContent = randomNumber;
+
+  if (valueGuess === randomNumber) {
+    atualizarTexto('.message', 'Correct Number!');
+    atualizarTexto('.numbe', randomNumber);
     document.querySelector('body').style.background = 'green';
 
-    // O problema está aqui. Ele está alterando msm sendo inferior
+    // Atualiza o bestScore apenas se for maior que o anterior
     if (scorePlayer > bestScore) {
       bestScore = scorePlayer;
-      document.querySelector('.highscore').textContent = scorePlayer;
+      atualizarTexto('.highscore', bestScore);
     }
-  }
-  // Caso o jogador erre a alternativa
-  else {
-    // Caso o jogador perca o game
-    if (scorePlayer == 1) {
-      document.querySelector('.message').textContent = 'You lost the game!';
-      document.querySelector('.score').textContent = 0;
-    }
-    // Indica se o número é maior ou menor
-    else {
-      scorePlayer--;
-      document.querySelector('.score').textContent = scorePlayer;
+  } else {
+    scorePlayer--;
 
-      if (valueGuess < randomNumber) {
-        document.querySelector('.message').textContent =
-          'The secret number is Higher!';
-      } else {
-        document.querySelector('.message').textContent =
-          'The secret number is Lower!';
-      }
+    if (scorePlayer <= 0) {
+      atualizarTexto('.message', 'You lost the game!');
+      atualizarTexto('.score', 0);
+    } else {
+      atualizarTexto(
+        '.message',
+        valueGuess < randomNumber
+          ? 'The secret number is Higher!'
+          : 'The secret number is lower!'
+      );
+      atualizarTexto('.score', scorePlayer);
     }
   }
-});
+};
 
-// Evento para refazer o jogo
-document.querySelector('.again').addEventListener('click', function () {
-  document.querySelector('.number').textContent = '?';
-  document.querySelector('.guess').value = ' ';
-  document.querySelector('body').style.background = '#222';
-  document.querySelector('.score').textContent = 20;
-  document.querySelector('.message').textContent = 'Start guessing...';
-  randomNumber = Math.trunc(Math.random() * 20 + 1);
-  // O problema está aqui. Ele está alterando msm sendo inferior
-  if (scorePlayer > bestScore) {
-    bestScore = scorePlayer;
-    document.querySelector('.highscore').textContent = scorePlayer;
-  }
+const reiniciarJogo = () => {
+  randomNumber = gerarNumeroAleatorio();
   scorePlayer = 20;
-});
 
-console.log(bestScore);
+  atualizarTexto('.number', '?');
+  atualizarTexto('.message', 'Start guessing...');
+  atualizarTexto('.score', scorePlayer);
+  document.querySelector('.guess').value = '';
+  document.querySelector('body').style.background = '#222';
+};
 
-// Erros encontrados = Quando ele acertar o número, deve verificar se o score é maior e atualizar
-// Se não, manter e cpntinuar
-
-// Quando eu clico no again, ele não atualiza para o maior
+document.querySelector('.check').addEventListener('click', verificarPalpite);
+document.querySelector('.again').addEventListener('click', reiniciarJogo);
