@@ -19,3 +19,11 @@ let z;
 let randomNumber = Math.trunc(Math.random() * 10 + 1);
 
 console.log(randomNumber);
+
+// Ternary operator = a shotcut to if() and else() statements
+// condition ? codeIfTrue : codeIfFalse
+
+let age = 21;
+
+let message = age >= 18 ? "You'are an adult" : "You'are a minor";
+console(message);
