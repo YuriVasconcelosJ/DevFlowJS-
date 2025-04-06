@@ -26,3 +26,7 @@ console.log(userName.startsWith("e"));
 console.log(userName.includes());
 // Troca todos os caracteres por outro
 console.log(userName.replaceAll("o", "x"));
+// Adiciona o caractere que voce indicar e sua quantidade
+console.log(userName.padStart(10, "p"));
+// Adiciona o caractere que voce indicar e sua quantidade
+console.log(userName.padEnd(10, "p"));
