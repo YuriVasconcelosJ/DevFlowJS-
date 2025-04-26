@@ -27,7 +27,7 @@ function gerarNumeroAleatorio() {
 function mostrarImagem() {
   let valorDado = gerarNumeroAleatorio();
   countPlayer1 += valorDado;
-  document.querySelector('.dice').src = images[index - 1];
+  document.querySelector('.dice').src = images[valorDado - 1];
 }
 
 // roolDice
