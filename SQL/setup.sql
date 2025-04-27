@@ -88,4 +88,28 @@ UPDATE employees SET hourly_pay = 10.25 WHERE employee_id = 6;
 UPDATE employees SET hourly_pay= 35.00 WHERE employee_id = 1;
 UPDATE employees SET hourly_pay = 10.50, hire_date = "2023-01-07" WHERE employee_id =6
 
---
+-- Comando para deletar um campo
+DELETE FROM employees WHERE employee_id = 6;
+SELECT * employees;
+
+-- Métodos para add data de hj, hora de hj e data e hora junto
+CREATE TABLE test(
+  my_date DATE,
+  my_time TIME,
+  my_datetime DATETIME
+);
+
+INSERT INTO test VALUES (CURRENT_DATE(), CURRENT_TIME(), NOW());
+
+SELECT * FROM employees
+DROP TABLE test;
+
+-- Restrição UNIQUE serve para garantir que os valores sejam unicos
+
+CREATE TABLE products (
+  product_id INT,
+  product_name VARCHAR(25) UNIQUE,
+  price DECIMAL(4,2)
+)
+
+ALTER TABLE products ADD CONSTRAINT UNIQUE(product_name);

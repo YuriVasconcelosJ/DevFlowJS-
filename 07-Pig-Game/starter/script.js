@@ -30,9 +30,16 @@ function mostrarImagem() {
   document.querySelector('.dice').src = images[valorDado - 1];
 }
 
+function verificarTotal(player) {
+  if (player)
+}
+
 // roolDice
 buttonRoolDice.addEventListener('click', () => {
   // Futura função
   mostrarImagem();
-  console.log(`Mostrar contador geral: ${countPlayer1}`);
+  console.log(`Mostrar contador geral: ${countPlayer1}`
+
+
+  );
 });

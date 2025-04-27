@@ -1,0 +1,31 @@
+# Tipos de comandos
+
+- **Comnados DDL** - _Data Definition Language;_
+- **Comandos DML** - _Data Manipulation Language;_
+- **Comnados DCL** - _Data Control Language;_
+- **Comandos DQL** - _Data Query Language;_
+- **Comandos DTL** - _Data Transiction Language._
+
+## Comandos DDL
+
+São comandos destinados a criar, alterar e excluir objetos no SGBD(Banco de dados, tabelas, visões, índices)
+`CREATE, ALTER, DROP, TRUNCATE, RENAME`
+
+`CREATE DATABASE bancoDados;`
+`CREATE TABLE alunos ( id INT PRIMARY_KEY, nome VARCHAR (100));`
+`ALTER TABLE alunos ADD idade INT;`
+`TRUNCATE TABLE alunos;`
+`RENAME TABLE alunos TO students;`
+`DROP TABLE students;`
+`DROP DATABASE bancoDados;`
+
+## Comandos DML
+
+São comandos destinados a insrir, alterar e excluir dados em tabelas
+
+Os principais comando são:
+`INSERT, UPDATE, DELETE`
+
+`INSERT INTO alunos (id, nome, idade) VALUES (1, 'João', 20);`
+`UPDATE aluno SET idade = 21 WHERE id = 1;`
+`DELETE FROM alunos WHERE id = 1`
